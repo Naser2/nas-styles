@@ -11,9 +11,10 @@
  * - Shadow props
  */
 
-import { borderRadii, borderWidths, spacing } from '@/constants/tokens';
-import { useTheme } from '@/contexts/ThemeContext';
-import { useBreakpoints } from '@/hooks/useBreakpoints';
+import React from 'react';
+import { borderRadii, borderWidths, spacing } from '../../tokens';
+import { useTheme } from '../../context/ThemeContext';
+import { useBreakpoints } from '../../hooks/useBreakpoints';
 import { StyleProp, View, ViewStyle } from 'react-native';
 import type { BoxProps, ResponsiveBoxProps } from './Box.types';
 
@@ -183,8 +184,8 @@ export function Box({
     ...(finalPl !== undefined && { paddingLeft: spacing[finalPl as keyof typeof spacing] || finalPl }),
 
     // Colors
-    ...(bg && { backgroundColor: colors[bg] || bg }),
-    ...(borderColor && { borderColor: colors[borderColor] || borderColor }),
+    ...(bg && { backgroundColor: (colors as Record<string, any>)[bg] || bg }),
+    ...(borderColor && { borderColor: (colors as Record<string, any>)[borderColor] || borderColor }),
 
     // Borders
     ...(borderRadius !== undefined && { borderRadius: borderRadii[borderRadius as keyof typeof borderRadii] || borderRadius }),

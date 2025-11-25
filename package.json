@@ -1,5 +1,5 @@
 {
-  "name": "nas-styles",
+  "name": "nast-styles",
   "version": "1.0.0",
   "description": "Type-safe React Native styling system with grid simulation and responsive breakpoints",
   "main": "dist/cjs/index.js",

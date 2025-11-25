@@ -1,7 +1,7 @@
 import { ViewProps, ViewStyle, StyleProp } from 'react-native';
-import type { SpacingKey } from '@/constants/tokens/spacing.tokens';
-import type { SemanticShadowKey } from '@/constants/tokens/shadows.tokens';
-import type { BorderRadius, BorderWidth } from '@/constants/tokens/borders.tokens';
+import type { SpacingKey } from '../../tokens/spacing.tokens';
+import type { SemanticShadowKey } from '../../tokens/shadows.tokens';
+import type { BorderRadius, BorderWidth } from '../../tokens/borders.tokens';
 
 // ============ RESPONSIVE PROPS ============
 

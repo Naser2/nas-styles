@@ -1,7 +1,12 @@
-import { BaseColorTokens, baseGradientTokens, nativeGradientArrays, GradientKey } from '@/constants/BaseColorTokens';
-import { Typography } from '@/constants/LayoutConstants';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { createContext, ReactNode, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import React, { createContext, ReactNode, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { BaseColorTokens, baseGradientTokens, nativeGradientArrays, GradientKey } from '../tokens/BaseColorTokens';
+import { Typography } from '../tokens/LayoutConstants';
+
+// AsyncStorage mock - consumers should provide their own implementation
+const AsyncStorage = {
+  getItem: async (_key: string): Promise<string | null> => null,
+  setItem: async (_key: string, _value: string): Promise<void> => {},
+};
 import { Appearance, ColorSchemeName } from 'react-native';
 
 export type ThemeMode = 'light' | 'dark' | 'system';
