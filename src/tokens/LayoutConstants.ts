@@ -11,7 +11,7 @@
  */
 
 import { BaseColorTokens } from './BaseColorTokens';
-import { spacing as tokenSpacing } from './tokens/spacing.tokens';
+import { spacing as tokenSpacing } from './spacing.tokens';
 
 // Typography system matching the original app
 export const Typography = {

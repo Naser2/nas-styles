@@ -1,5 +1,6 @@
+import type React from 'react';
 import { TextProps as RNTextProps, TextStyle, StyleProp } from 'react-native';
-import type { TypographyStyleName } from '@/constants/tokens/typography.tokens';
+import type { TypographyStyleName } from '../../tokens/typography.tokens';
 
 export interface TextProps extends Omit<RNTextProps, 'style'> {
   children?: React.ReactNode;

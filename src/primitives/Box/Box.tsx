@@ -11,10 +11,11 @@
  * - Shadow props
  */
 
-import { borderRadii, borderWidths, spacing } from '@/constants/tokens';
-import { useTheme } from '@/contexts/ThemeContext';
-import { useBreakpoints } from '@/hooks/useBreakpoints';
+import React from 'react';
 import { StyleProp, View, ViewStyle } from 'react-native';
+import { borderRadii, borderWidths, spacing } from '../../tokens';
+import { useTheme } from '../../context/ThemeContext';
+import { useBreakpoints } from '../../hooks/useBreakpoints';
 import type { BoxProps, ResponsiveBoxProps } from './Box.types';
 
 export function Box({
@@ -182,9 +183,9 @@ export function Box({
     ...(finalPb !== undefined && { paddingBottom: spacing[finalPb as keyof typeof spacing] || finalPb }),
     ...(finalPl !== undefined && { paddingLeft: spacing[finalPl as keyof typeof spacing] || finalPl }),
 
-    // Colors
-    ...(bg && { backgroundColor: colors[bg] || bg }),
-    ...(borderColor && { borderColor: colors[borderColor] || borderColor }),
+    // Colors - use type assertion for dynamic color lookup
+    ...(bg && { backgroundColor: ((colors as unknown) as Record<string, string>)[bg] ?? bg }),
+    ...(borderColor && { borderColor: ((colors as unknown) as Record<string, string>)[borderColor] ?? borderColor }),
 
     // Borders
     ...(borderRadius !== undefined && { borderRadius: borderRadii[borderRadius as keyof typeof borderRadii] || borderRadius }),

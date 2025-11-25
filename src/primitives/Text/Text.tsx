@@ -11,8 +11,8 @@
 
 import React from 'react';
 import { Text as RNText, TextStyle } from 'react-native';
-import { useTheme } from '@/contexts/ThemeContext';
-import { typographyStyles } from '@/constants/tokens';
+import { useTheme } from '../../context/ThemeContext';
+import { typographyStyles } from '../../tokens';
 import type { TextProps } from './Text.types';
 
 export function Text({
@@ -33,7 +33,7 @@ export function Text({
   // Build style object
   const textStyle: TextStyle = {
     ...typographyStyle,
-    ...(color && { color: colors[color] || color }),
+    ...(color && { color: ((colors as unknown) as Record<string, string>)[color] ?? color }),
     ...(align && { textAlign: align }),
   };
 

@@ -17,4 +17,4 @@ export * from './BaseColorTokens';
 export { createTypographyStyle, getTypographyStyle } from './typography.tokens';
 export { getShadow, getAppleShadow } from './shadows.tokens';
 export { getGradient, getCssGradient, createGradient } from './gradients.tokens';
-export { getStackingContextTransform } from './animations.tokens';
+// Note: animations.tokens exports easing, durations, springConfigs, componentAnimations

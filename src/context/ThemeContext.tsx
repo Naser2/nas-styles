@@ -1,8 +1,19 @@
-import { BaseColorTokens, baseGradientTokens, nativeGradientArrays, GradientKey } from '@/constants/BaseColorTokens';
-import { Typography } from '@/constants/LayoutConstants';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { createContext, ReactNode, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import React, { createContext, ReactNode, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { Appearance, ColorSchemeName } from 'react-native';
+import { BaseColorTokens, baseGradientTokens, nativeGradientArrays, GradientKey } from '../tokens/BaseColorTokens';
+import { Typography } from '../tokens/LayoutConstants';
+
+// AsyncStorage interface - consumers should provide implementation via context or props
+interface AsyncStorageInterface {
+  getItem: (key: string) => Promise<string | null>;
+  setItem: (key: string, value: string) => Promise<void>;
+}
+
+// Default no-op implementation
+const defaultAsyncStorage: AsyncStorageInterface = {
+  getItem: async () => null,
+  setItem: async () => {},
+};
 
 export type ThemeMode = 'light' | 'dark' | 'system';
 export type ActiveTheme = 'light' | 'dark';
@@ -971,7 +982,7 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
   useEffect(() => {
     const loadTheme = async () => {
       try {
-        const savedTheme = await AsyncStorage.getItem(THEME_STORAGE_KEY);
+        const savedTheme = await defaultAsyncStorage.getItem(THEME_STORAGE_KEY);
         if (savedTheme && ['light', 'dark', 'system'].includes(savedTheme)) {
           setMode(savedTheme as ThemeMode);
         }
@@ -996,7 +1007,7 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
   const setTheme = useCallback(async (newMode: ThemeMode) => {
     try {
       setMode(newMode);
-      await AsyncStorage.setItem(THEME_STORAGE_KEY, newMode);
+      await defaultAsyncStorage.setItem(THEME_STORAGE_KEY, newMode);
     } catch (error) {
       console.log('Error saving theme:', error);
     }
