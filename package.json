@@ -1,0 +1,80 @@
+{
+  "name": "nas-styles",
+  "version": "1.0.0",
+  "description": "Type-safe React Native styling system with grid simulation and responsive breakpoints",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js",
+      "types": "./dist/types/index.d.ts"
+    },
+    "./tokens": {
+      "import": "./dist/esm/tokens/index.js",
+      "require": "./dist/cjs/tokens/index.js",
+      "types": "./dist/types/tokens/index.d.ts"
+    },
+    "./hooks": {
+      "import": "./dist/esm/hooks/index.js",
+      "require": "./dist/cjs/hooks/index.js",
+      "types": "./dist/types/hooks/index.d.ts"
+    },
+    "./primitives": {
+      "import": "./dist/esm/primitives/index.js",
+      "require": "./dist/cjs/primitives/index.js",
+      "types": "./dist/types/primitives/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "npm run build:esm && npm run build:cjs && npm run build:types",
+    "build:esm": "tsc --project tsconfig.esm.json",
+    "build:cjs": "tsc --project tsconfig.cjs.json",
+    "build:types": "tsc --project tsconfig.types.json",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run clean && npm run build",
+    "release": "npm publish --access public"
+  },
+  "keywords": [
+    "react-native",
+    "styling",
+    "design-system",
+    "grid",
+    "responsive",
+    "typescript",
+    "tailwind-like",
+    "restyle-alternative",
+    "apple-design",
+    "flexbox-grid"
+  ],
+  "author": "Naser Sanou",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Naser2/nas-styles.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Naser2/nas-styles/issues"
+  },
+  "homepage": "https://github.com/Naser2/nas-styles#readme",
+  "peerDependencies": {
+    "react": ">=17.0.0",
+    "react-native": ">=0.70.0",
+    "@react-native-async-storage/async-storage": ">=1.17.0"
+  },
+  "peerDependenciesMeta": {
+    "@react-native-async-storage/async-storage": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "@types/react-native": "^0.72.0",
+    "typescript": "^5.0.0"
+  }
+}
